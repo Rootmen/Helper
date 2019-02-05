@@ -5,7 +5,7 @@ import sqlite3
 from django.http import HttpResponse
 from xlsxwriter import Workbook
 
-GenderMass = ["студенки", "студента"]
+GenderMass = ["женский", "мужской"]
 
 # Функция создания базы данных, запускать только один раз при ее создании
 def First_Init():
@@ -35,7 +35,7 @@ def Insert_Data(gender, group, surname, name, lastname, number, typeconcession):
     mysel = cursor.fetchall()
     if mysel != []:
         return
-    # Создание таблицы
+    # добавление записи
     StringSQLtext = "INSERT INTO comments ( surname, name, lname, group2, number, typeconcession, gender ) VALUES ( '"+surname+"', '"+name+"', '"+lastname+"', '"+group+"', '"+number+"', '"+typeconcession+"', '"+gender+"' ); "
     cursor.execute(StringSQLtext)
     conn.commit()

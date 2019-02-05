@@ -1,7 +1,6 @@
 import mimetypes
 import os
 import random
-
 from django.http import HttpResponse
 from docxtpl import DocxTemplate
 
@@ -12,10 +11,12 @@ GenderMass = ["студенки", "студента"]
 
 # Функкция создания ворд документа по шаблону
 def CreateWord(gender, group, surname, name, lastname, number, typeconcession):
-    # Проверка наличия данных
+    # Проверка на пустоту
     if gender is None or group is None or surname is None or name is None or lastname is None or number is None or typeconcession is None:
         return "Error NoData"
-
+    # Проверка наличия данных
+    if gender == '' or group == '' or surname == '' or name == '' or lastname == '' or number == '' or typeconcession == '':
+        return "Error NoData"
     # Проверка длинны полученных данных, ограничение 128 символов
     if len(group) > 128 or len(group) > 128 or len(group) > 128 or len(group) > 128 or len(group) > 128 or len(
             group) > 128:

@@ -32,6 +32,10 @@ def Set_Data(request):
     lname = re.sub(" +", ' ', lname.strip())
     number = re.sub(" +", ' ', number.strip())
     typeconcession = re.sub(" +", ' ', typeconcession.strip())
+    if not re.match(r"8\d\d\d\d\d\d\d\d\d", number):
+        return HttpResponse("НоNumber")
+    if not re.match(r"\w\w\w-\d\d\d", group):
+        return HttpResponse("НоGroup")
     respons = CreateWord(gender, group, surname, name, lname, number, typeconcession)
     if respons != "Error Gender" and respons != "Error NoData" and respons != "Error Len":
         t = threading.Thread(target=Insert_Data, args=(gender, group, surname, name, lname, number, typeconcession))

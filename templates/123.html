@@ -1,127 +1,131 @@
-{% load staticfiles %}
 
 <html>
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-        <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
-        <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}"/>
+        <link rel="stylesheet" href="../static/css/styles.css"/>
+        <link rel="stylesheet" href="../static/css/bootstrap/bootstrap.min.css"/>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-        <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
 
     <body>
-                    <form action="setdata/" method="GET">
+        <form action="setdata/" method="GET">
 
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                              <div class="input-group input-group-lg">
-                                  <select id="chooseDoc" name="chooseDoc" class="form-control" onchange="onRequestSelect(this);">
-                                      <!-- <option value="0">Выбери заявление...</option> -->
-                                      <option value="1" selected>Мат. помощь</option>
-                                      <option value="2">Мат. помощь для проживающих в обшежитии</option>
-                                      <option value="3">Заявление на изменение формы обучения</option>
-                                  </select>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <div class="input-group input-group-lg">
+                        <select id="chooseDoc" name="chooseDoc" class="form-control" onchange="onRequestSelect(this);">
+                            <!-- <option value="0">Выбери заявление...</option> -->
+                            <option value="1" selected>Мат. помощь</option>
+                            <option value="2">Мат. помощь для проживающих в обшежитии</option>
+                            <option value="3">Заявление на изменение формы обучения</option>
+                        </select>
 
-                                  <div class="input-group-append">
-                                    <button class="btn btn-outline-dark">Выбрать</button>
-                                  </div>
-
-                              </div>
-                            </div>
+                        <div class="input-group-append">
+                        <button class="btn btn-outline-dark">Выбрать</button>
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <div class="input-group mb-2 mr-sm-2">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text"><i class="far fa-user"></i></div>
-                                    </div>
-                                    <input type="text" class="form-control" name="surname" placeholder="Иванова">
-                                </div>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <div class="input-group mb-2 mr-sm-2">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text"><i class="fas fa-hashtag"></i></div>
-                                    </div>
-                                    <input type="text" class="form-control" name="group" placeholder="Группа">
-                                </div>
-                            </div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <div class="input-group mb-2 mr-sm-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="far fa-user"></i></div>
                         </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <div class="input-group mb-2 mr-sm-2">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text"><i class="far fa-user"></i></div>
-                                    </div>
-                                    <input type="text" class="form-control" name="name" placeholder="Ивана">
-                                </div>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <div class="input-group mb-2 mr-sm-2">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text"><i class="fas fa-phone"></i></div>
-                                    </div>
-                                    <input type="text" class="form-control" name="number" placeholder="Номер телефона">
-                                </div>
-                            </div>
+                        <input type="text" class="form-control" name="surname" placeholder="Иванова">
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <div class="input-group mb-2 mr-sm-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fas fa-hashtag"></i></div>
                         </div>
+                        <input type="text" class="form-control" name="group" placeholder="Группа">
+                    </div>
+                </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <div class="input-group mb-2 mr-sm-2">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text"><i class="far fa-user"></i></div>
-                                    </div>
-                                    <input type="text" class="form-control" name="lname" placeholder="Ивановича">
-                                </div>
-                            </div>
+            </div>
 
-                            <div class="form-group col-md-6">
-                                <div class="input-group mb-4">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="gender"><i class="fas fa-male"></i><i class="fas fa-female"></i></label>
-                                    </div>
-                                    <select class="custom-select" name="gender">
-                                      <option value="1">Мужской</option>
-                                      <option value="0">Женский</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!--
-                            <div class="form-group col-md-6">
-                                <div class="input-group mb-2 mr-sm-2">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text"><i class="fas fa-male"></i><i class="fas fa-female"></i></div>
-                                    </div>
-                                    <input type="text" class="form-control" name="gender" placeholder="Пол">
-                                </div>
-                            </div>-->
-
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <div class="input-group mb-2 mr-sm-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="far fa-user"></i></div>
                         </div>
+                        <input type="text" class="form-control" name="name" placeholder="Ивана">
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <div class="input-group mb-2 mr-sm-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fas fa-phone"></i></div>
+                        </div>
+                        <input type="text" class="form-control" name="number" placeholder="Номер телефона">
+                    </div>
+                </div>
+            </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <div class="input-group mb-2 mr-sm-2">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text"><i class="far fa-comment"></i></div>
-                                    </div>
-                                    <input type="text" class="form-control" name="typeconcession" placeholder="Категория (инвалид, сирота и др.)">
-                                </div>
-                            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <div class="input-group mb-2 mr-sm-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="far fa-user"></i></div>
                         </div>
-                        {{ form.captcha }}
-                        <div class="row">
-                            <button type="submit" class="btn btn-primary mb-2 btn-lg">Отправить</button>
+                        <input type="text" class="form-control" name="lname" placeholder="Ивановича">
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="gender"><i class="fas fa-male"></i><i class="fas fa-female"></i></label>
                         </div>
-                    </form>
-            <!--/////////////////////////////////////-->
-            <script src="{% static 'js/mainpage.js' %}"></script>
-            <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-            <script src="{% static 'js/bootstrap/bootstrap.js' %}"></script>
+                        <select class="custom-select" name="gender">
+                            <option value="1">Мужской</option>
+                            <option value="0">Женский</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--
+                <div class="form-group col-md-6">
+                    <div class="input-group mb-2 mr-sm-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fas fa-male"></i><i class="fas fa-female"></i></div>
+                        </div>
+                        <input type="text" class="form-control" name="gender" placeholder="Пол">
+                    </div>
+                </div>-->
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <div class="input-group mb-2 mr-sm-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="far fa-comment"></i></div>
+                        </div>
+                        <input type="text" class="form-control" name="typeconcession" placeholder="Категория (инвалид, сирота и др.)">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <button type="submit" class="btn btn-primary mb-2 btn-lg">Отправить</button>
+            </div>
+        </form>
+        
+            <!-- <form action="getdata/" method="GET">
+                <div class="row">
+                <button type="submit">Скачать всё, что есть</button>
+            </div>
+            </form> -->
+        <!--/////////////////////////////////////-->
+        <script src="../static/js/mainpage.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="../static/js/bootstrap/bootstrap.js"></script>
     </body>
 </html>

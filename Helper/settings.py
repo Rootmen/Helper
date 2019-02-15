@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
+# Define SETTINGS_PATH for templates dir
+SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,7 +28,7 @@ SECRET_KEY = '1v6zfy59tbx08+x$cp-f!t2d#xr4+ema(0$k!5by%h^#(+*#df'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'Rootmen.pythonanywhere.com']
+ALLOWED_HOSTS = [u'Rootmen.pythonanywhere.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -54,7 +57,7 @@ ROOT_URLCONF = 'Helper.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(SETTINGS_PATH, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,3 +128,5 @@ MEDIA_ROOT = u'/home/Rootmen/Helper/media'
 MEDIA_URL = '/media/'
 STATIC_ROOT = u'/home/Rootmen/Helper/static'
 STATIC_URL = '/static/'
+#TEMPLATES_ROOT = u'/home/Rootmen/Helper/templates'
+#TEMPLATES_URL = '/templates/'

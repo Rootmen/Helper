@@ -67,3 +67,7 @@ body {
 .menu-font-small {
     font-size: 14px;
 }
+
+.radio-hidden {
+    display: none;
+}

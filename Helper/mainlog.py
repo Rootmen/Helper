@@ -11,11 +11,11 @@ from Helper.db_access.Main import Insert_Data, Get_Data as Data_Base
 from Helper.rsa_path.Main import Get_Path
 
 from django.conf import settings
-from g_recaptcha.validate_recaptcha import validate_captcha
+#from g_recaptcha.validate_recaptcha import validate_captcha
 # путь для получения данных, выдается в шифрованном виде
 Patch_Of_Get = "Non"
 
-@validate_captcha
+#@validate_captcha
 def Set_Data(request):
     name = request.GET.get('name', '')
     lname = request.GET.get('lname', '')
@@ -45,7 +45,7 @@ def Set_Data(request):
     return HttpResponse(respons)
 
 # Рендер главной страницы
-@validate_captcha
+#@validate_captcha
 def Index(request):
     return render(request, '123.html')
 
@@ -76,5 +76,3 @@ def Page_Return_Data(request, path):
         Patch_Of_Get = "Non"
         return Data_Base()
     return redirect("/index")
-
-

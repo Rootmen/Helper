@@ -47,7 +47,7 @@ def Set_Data(request):
 # Рендер главной страницы
 #@validate_captcha
 def Index(request):
-    return render(request, '123.html')
+    return render(request, 'index.html')
 
 # Перенапрвление на главную страницу
 def Any_Page(request):

@@ -9,59 +9,40 @@
     </head>
 
     <body>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container">
-                    <a class="navbar-brand" href="/">ВузУслуги</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarColor01">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/">Главная страница</span></a>
-                            </li>
-                            <li class="nav-item active"> <!-- Active!!! -->
-                                <a class="nav-link" href="/contacts">Обратная связь</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-
-            <div class="row">
-                <div class="banner banner-main">
-                    <div class="container">
-                      <h2>Единый сервис получения услуг для студентов</h2>
-                      <p>Вы можете протестировать сервис "Заявление" </p>
-                    </div>
-                </div>
-            </div>
 
 			<!--################################################################################################ -->
             <div class="container">
                 <div class="jumbotron r-jumbo">
-                    <h2>Создание заявления</h2>
+                    <h2>Электронное заявление на материальную помощь</h2>
+                    <h4>РУТ ИУИТ</h4>
+                    <h2> &nbsp </h2>
 
-            <form action="/send.php" method="POST">
-                    <div class="row">
-                        <div class="btn-group" data-toggle="buttons">
-                            <label class="radio btn btn-outline-dark active" data-need-message="1">
-                                <input type="radio" class="radio-hidden" name="chooseDoc" value="1" checked />Мат. помощь
-                            </label>
-                            <label class="radio btn btn-outline-dark" data-need-message="0">
-                                <input type="radio" class="radio-hidden" name="chooseDoc" value="2" />Мат. помощь (общежитие)
-                            </label>
+            <form action="setdata/" method="POST">
+
+                      <div class="form-group col-md-1">
+                            <div class="row">
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="radio btn btn-outline-dark active" data-need-message="1">
+                                        <input type="radio" class="radio-hidden" name="chooseDoc" value="1" checked />Мат. помощь
+                                    </label>
+                                    <label class="radio btn btn-outline-dark" data-need-message="0">
+                                        <input type="radio" class="radio-hidden" name="chooseDoc" value="2" />Мат. помощь (общежитие)
+                                    </label>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                      
+
+                        <h6>Фамилия, имя и отчество заполняются в родительном падеже. </h6>
+
+                        <!-- maxlength="15" -->
+
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <div class="input-group mb-2 mr-sm-2">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="far fa-user"></i></div>
                                     </div>
-                                    <input type="text" class="form-control" name="surname" placeholder="Иванова" required>
+                                    <input type="text" maxlength="20" pattern="[А-Яа-яЁё]" class="form-control" name="surname" placeholder="Иванова" required>
                                 </div>
                             </div>
                             <div class="form-group col-md-6">
@@ -69,7 +50,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="fas fa-hashtag"></i></div>
                                     </div>
-                                    <input type="text" class="form-control" name="group" placeholder="Группа" required>
+                                    <input type="text" maxlength="7" class="form-control" name="group" placeholder="УИБ-123" required>
                                 </div>
                             </div>
 
@@ -81,15 +62,18 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="far fa-user"></i></div>
                                     </div>
-                                    <input type="text" class="form-control" name="name" placeholder="Ивана" required>
+                                    <input type="text" maxlength="20" pattern="[А-Яа-яЁё]" class="form-control" name="name" placeholder="Ивана" required>
                                 </div>
                             </div>
+
+
+
                             <div class="form-group col-md-6">
                                 <div class="input-group mb-2 mr-sm-2">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="fas fa-phone"></i></div>
                                     </div>
-                                    <input type="text" class="form-control" name="number" placeholder="Номер телефона" required>
+                                    <input type="text" maxlength="11" pattern="[0-9]{11,}" class="form-control" name="number" placeholder="89031234567" required>
                                 </div>
                             </div>
                         </div>
@@ -100,7 +84,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="far fa-user"></i></div>
                                     </div>
-                                    <input type="text" class="form-control" name="lname" placeholder="Ивановича" required>
+                                    <input type="text" maxlength="20" pattern="[А-Яа-яЁё]" class="form-control" name="lname" placeholder="Ивановича" required>
                                 </div>
                             </div>
 
@@ -125,10 +109,16 @@
                                         <div class="input-group-text"><i class="far fa-comment"></i></div>
                                     </div>
 									<select class="custom-select" name="typeconcession">
-										<option value="1">Инвалид</option>
-										<option value="2">Неполная семья</option>
-										<option value="3">Девственник на 5 курсе</option>
-										<option value="4">Лох</option>
+										<option value="1">Студент-сирота</option>
+										<option value="2">Студент-инвалид</option>
+										<option value="3">Студент, имеющий детей</option>
+										<option value="4">Студент из многодетной семьи</option>
+                    <option value="5">Студент-участник военных действий</option>
+                    <option value="6">Студент-чернобылец</option>
+                    <option value="7">Студент, имеющий родителей-инвалидов, родителей-пенсионеров</option>
+                    <option value="8">Студент из неполной семьи</option>
+                    <option value="9">Студент из малоимущей семьи</option>
+                    <option value="10">Студент, находящийся на диспансерном учёте с хроническими заболеваниями</option>
                                     </select>
                                 </div>
                             </div>

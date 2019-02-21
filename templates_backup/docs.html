@@ -1,11 +1,10 @@
-{% load static %}
 
 <html>
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-        <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
-        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+        <link rel="stylesheet" href="../static/css/styles.css"/>
+        <link rel="stylesheet" href="../static/css/bootstrap/bootstrap.min.css"/>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     </head>
 
@@ -25,18 +24,6 @@
                             <li class="nav-item active"> <!-- Active!!! -->
                                 <a class="nav-link" href="/contacts">Обратная связь</a>
                             </li>
-
-                            <!--<li class="nav-item">
-                                <a class="nav-link" href="#">Page2</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page3</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page4</a>
-                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -47,50 +34,34 @@
                     <div class="container">
                       <h2>Единый сервис получения услуг для студентов</h2>
                       <p>Вы можете протестировать сервис "Заявление" </p>
-                      <div class="row">
-                            <!--<button class="btn btn-secondary btn-lg">Узнать больше</button>-->
-                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- ЭТО УНИКАЛЬНЫЙ КОД, ВСЁ ОСТАЛЬНОЕ ЗАПИХИВАЙ В ШАБЛОН -->
+			<!--################################################################################################ -->
             <div class="container">
                 <div class="jumbotron r-jumbo">
                     <h2>Создание заявления</h2>
 
+            <form action="/send.php" method="POST">
                     <div class="row">
-                      <h6>&nbsp;&nbsp;&nbsp;&nbsp;*Выберите заявление!</h4>
-                    </div>
-
-                    <form action="" method="GET">
-
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                              <div class="input-group input-group-lg">
-                                  <select id="chooseDoc" name="chooseDoc" class="form-control" onchange="onRequestSelect(this);">
-                                      <option value="0" selected>Выберите заявление...</option>
-                                      <option value="1">Мат. помощь</option>
-                                      <option value="2">Мат. помощь для проживающих в обшежитии</option>
-                                      <option value="3">Заявление на изменение формы обучения</option>
-                                  </select>
-
-                                  <div class="input-group-append">
-                                    <button class="btn btn-outline-dark">Выбрать</button>
-                                  </div>
-
-                              </div>
-                            </div>
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="radio btn btn-outline-dark active" data-need-message="1">
+                                <input type="radio" class="radio-hidden" name="chooseDoc" value="1" checked />Мат. помощь
+                            </label>
+                            <label class="radio btn btn-outline-dark" data-need-message="0">
+                                <input type="radio" class="radio-hidden" name="chooseDoc" value="2" />Мат. помощь (общежитие)
+                            </label>
                         </div>
-                      </form>
-                      <!--
+                    </div>
+                      
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <div class="input-group mb-2 mr-sm-2">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="far fa-user"></i></div>
                                     </div>
-                                    <input type="text" class="form-control" name="surname" placeholder="Иванова">
+                                    <input type="text" class="form-control" name="surname" placeholder="Иванова" required>
                                 </div>
                             </div>
                             <div class="form-group col-md-6">
@@ -98,7 +69,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="fas fa-hashtag"></i></div>
                                     </div>
-                                    <input type="text" class="form-control" name="group" placeholder="Группа">
+                                    <input type="text" class="form-control" name="group" placeholder="Группа" required>
                                 </div>
                             </div>
 
@@ -110,7 +81,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="far fa-user"></i></div>
                                     </div>
-                                    <input type="text" class="form-control" name="name" placeholder="Ивана">
+                                    <input type="text" class="form-control" name="name" placeholder="Ивана" required>
                                 </div>
                             </div>
                             <div class="form-group col-md-6">
@@ -118,7 +89,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="fas fa-phone"></i></div>
                                     </div>
-                                    <input type="text" class="form-control" name="number" placeholder="Номер телефона">
+                                    <input type="text" class="form-control" name="number" placeholder="Номер телефона" required>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +100,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="far fa-user"></i></div>
                                     </div>
-                                    <input type="text" class="form-control" name="lname" placeholder="Ивановича">
+                                    <input type="text" class="form-control" name="lname" placeholder="Ивановича" required>
                                 </div>
                             </div>
 
@@ -145,38 +116,33 @@
                                 </div>
                             </div>
 
-                            <!-
-                            <div class="form-group col-md-6">
-                                <div class="input-group mb-2 mr-sm-2">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text"><i class="fas fa-male"></i><i class="fas fa-female"></i></div>
-                                    </div>
-                                    <input type="text" class="form-control" name="gender" placeholder="Пол">
-                                </div>
-                            </div> ->
-
                         </div>
 
-                        <div class="form-row">
+                        <div id="message-row" class="form-row">
                             <div class="form-group col-md-12">
                                 <div class="input-group mb-2 mr-sm-2">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="far fa-comment"></i></div>
                                     </div>
-                                    <input type="text" class="form-control" name="typeconcession" placeholder="Ввод сообщения">
+									<select class="custom-select" name="typeconcession">
+										<option value="1">Инвалид</option>
+										<option value="2">Неполная семья</option>
+										<option value="3">Девственник на 5 курсе</option>
+										<option value="4">Лох</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <button type="submit" class="btn btn-primary mb-2 btn-lg">Отправить</button>
+                            <button type="submit" class="btn btn-outline-dark mb-2 btn-lg">Отправить</button>
                         </div>
-                    </form> -->
+                    </form>
                 </div>
             </div>
-            <!--/////////////////////////////////////-->
-            <script src="{% static 'js/core.js' %}"></script>
+            <!--############################################################################################## -->
             <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-            <script src="{% static 'js/bootstrap.min.js' %}"></script>
+            <script src="../static/js/bootstrap/bootstrap.js"></script>
+            <script src="../static/js/mainpage.js"></script>
     </body>
 </html>

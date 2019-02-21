@@ -126,7 +126,11 @@ STATIC_URL = '/static/'
 # see https://help.pythonanywhere.com/pages/DjangoStaticFiles for more info
 MEDIA_ROOT = u'/home/Rootmen/Helper/media'
 MEDIA_URL = '/media/'
-STATIC_ROOT = u'/home/Rootmen/Helper/static'
+#STATIC_ROOT = u'/home/Rootmen/Helper/static'
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
 #TEMPLATES_ROOT = u'/home/Rootmen/Helper/templates'
 #TEMPLATES_URL = '/templates/'

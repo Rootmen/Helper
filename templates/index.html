@@ -17,8 +17,8 @@
                     <h4>РУТ ИУИТ</h4>
                     <h2> &nbsp </h2>
 
-            <form action="setdata/" method="POST">
-
+            <form action="setdata/" method="GET">
+              {% csrf_token %}
                       <div class="form-group col-md-1">
                             <div class="row">
                                 <div class="btn-group" data-toggle="buttons">
@@ -42,7 +42,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="far fa-user"></i></div>
                                     </div>
-                                    <input type="text" maxlength="20" pattern="[А-Яа-яЁё]" class="form-control" name="surname" placeholder="Иванова" required>
+                                    <input type="text" maxlength="20" pattern="[А-Яа-яЁё]{,20}" class="form-control" name="surname" placeholder="Иванова" required>
                                 </div>
                             </div>
                             <div class="form-group col-md-6">
@@ -53,7 +53,6 @@
                                     <input type="text" maxlength="7" class="form-control" name="group" placeholder="УИБ-123" required>
                                 </div>
                             </div>
-
                         </div>
 
                         <div class="form-row">
@@ -62,7 +61,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="far fa-user"></i></div>
                                     </div>
-                                    <input type="text" maxlength="20" pattern="[А-Яа-яЁё]" class="form-control" name="name" placeholder="Ивана" required>
+                                    <input type="text" maxlength="20" pattern="[А-Яа-яЁё]{,20}" class="form-control" name="name" placeholder="Ивана" required>
                                 </div>
                             </div>
 
@@ -84,7 +83,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="far fa-user"></i></div>
                                     </div>
-                                    <input type="text" maxlength="20" pattern="[А-Яа-яЁё]" class="form-control" name="lname" placeholder="Ивановича" required>
+                                    <input type="text" maxlength="20" pattern="[А-Яа-яЁё]{,20}" class="form-control" name="lname" placeholder="Ивановича" required>
                                 </div>
                             </div>
 
@@ -109,16 +108,16 @@
                                         <div class="input-group-text"><i class="far fa-comment"></i></div>
                                     </div>
 									<select class="custom-select" name="typeconcession">
-										<option value="1">Студент-сирота</option>
-										<option value="2">Студент-инвалид</option>
-										<option value="3">Студент, имеющий детей</option>
-										<option value="4">Студент из многодетной семьи</option>
-                    <option value="5">Студент-участник военных действий</option>
-                    <option value="6">Студент-чернобылец</option>
-                    <option value="7">Студент, имеющий родителей-инвалидов, родителей-пенсионеров</option>
-                    <option value="8">Студент из неполной семьи</option>
-                    <option value="9">Студент из малоимущей семьи</option>
-                    <option value="10">Студент, находящийся на диспансерном учёте с хроническими заболеваниями</option>
+										<option value="0">Студент-сирота</option>
+										<option value="1">Студент-инвалид</option>
+										<option value="2">Студент, имеющий детей</option>
+										<option value="3">Студент из многодетной семьи</option>
+                    <option value="4">Студент-участник военных действий</option>
+                    <option value="5">Студент-чернобылец</option>
+                    <option value="6">Студент, имеющий родителей-инвалидов, родителей-пенсионеров</option>
+                    <option value="7">Студент из неполной семьи</option>
+                    <option value="8">Студент из малоимущей семьи</option>
+                    <option value="9">Студент, находящийся на диспансерном учёте с хроническими заболеваниями</option>
                                     </select>
                                 </div>
                             </div>

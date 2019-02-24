@@ -7,10 +7,13 @@ from docxtpl import DocxTemplate
 TemplateMass1 = ["очной", "заочной", "очно-заочной"]
 TemplateMass2 = ["очную", "заочную", "очно-заочную"]
 GenderMass = ["студенки", "студента"]
+ConcessionMass = ["студент-сирота", "cтудент-инвалид", "cтудент, имеющий детей", "cтудент из многодетной семьи", "cтудент-участник военных действий", "cтудент-чернобылец", "cтудент, имеющий родителей-инвалидов, родителей-пенсионеров", "cтудент из неполной семьи", "cтудент из малоимущей семьи", "cтудент, находящийся на диспансерном учёте с хроническими заболеваниями", "студент, проживающий в общежитии"]
 
+def chooseDirector(group):
+    return group
 
 # Функкция создания ворд документа по шаблону
-def CreateWord(gender, group, surname, name, lastname, number, typeconcession):
+def CreateWord(gender, group, surname, name, lastname, number, typeconcession, chooseDoc):
     # Проверка на пустоту
     if gender is None or group is None or surname is None or name is None or lastname is None or number is None or typeconcession is None:
         return "Error NoData"
@@ -29,7 +32,22 @@ def CreateWord(gender, group, surname, name, lastname, number, typeconcession):
 
     # Задание параметров для шаблона и сохранение результата
     random.seed()
-    doc = DocxTemplate("template1.docx")
+    if chooseDoc == '1':
+        doc = DocxTemplate("template1.docx")
+    elif chooseDoc == '2':
+        doc = DocxTemplate("template2.docx")
+        #doc = DocxTemplate("BlankMatHelp.docx")
+        typeconcession = 10
+    else:
+        print("chooseDoc error")
+        return "Error no chooseDoc"
+
+    if int(typeconcession) < 0 or int(typeconcession) > 10:
+        return "Error typeConcession"
+    typeconcession = ConcessionMass[int(typeconcession)]
+
+    print(chooseDirector(group))
+
     context = {'gender': gender,
                'group': group,
                'surname': surname,
@@ -37,6 +55,7 @@ def CreateWord(gender, group, surname, name, lastname, number, typeconcession):
                'lastname': lastname,
                'number': number,
                'typeconcession': typeconcession}
+
     doc.render(context)
     LogFile = True
     File_Path = ""

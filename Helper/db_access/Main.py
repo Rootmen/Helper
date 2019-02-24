@@ -12,21 +12,21 @@ def First_Init():
     conn = sqlite3.connect(os.path.abspath("Helper\db_access\db_s.db"))
     cursor = conn.cursor()
     # Создание таблицы
-    cursor.execute("""  CREATE TABLE comments ( 
-                        post_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, 
-                        surname TEXT NOT NULL, 
-                        name TEXT NOT NULL, 
-                        lname TEXT NOT NULL, 
-                        group2 TEXT NOT NULL, 
-                        number TEXT NULL, 
-                        typeconcession TEXT NOT NULL, 
+    cursor.execute("""  CREATE TABLE comments (
+                        post_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                        surname TEXT NOT NULL,
+                        name TEXT NOT NULL,
+                        lname TEXT NOT NULL,
+                        group2 TEXT NOT NULL,
+                        number TEXT NULL,
+                        typeconcession TEXT NOT NULL,
                         gender TEXT NULL);""")
     conn.commit()
     conn.close()
     return
 
 # Функция добавления данных в БД, если такой записи нету
-def Insert_Data(gender, group, surname, name, lastname, number, typeconcession):
+def Insert_Data(gender, group, surname, name, lastname, number, typeconcession, chooseDoc):
     gender = GenderMass[int(gender)]
     conn = sqlite3.connect(os.path.abspath("Helper\db_access\db_s.db"))
     cursor = conn.cursor()

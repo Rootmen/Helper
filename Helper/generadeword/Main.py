@@ -9,8 +9,17 @@ TemplateMass2 = ["очную", "заочную", "очно-заочную"]
 GenderMass = ["студенки", "студента"]
 ConcessionMass = ["студент-сирота", "cтудент-инвалид", "cтудент, имеющий детей", "cтудент из многодетной семьи", "cтудент-участник военных действий", "cтудент-чернобылец", "cтудент, имеющий родителей-инвалидов, родителей-пенсионеров", "cтудент из неполной семьи", "cтудент из малоимущей семьи", "cтудент, находящийся на диспансерном учёте с хроническими заболеваниями", "студент, проживающий в общежитии"]
 
+# Выбор зам декана по курсу
 def chooseDirector(group):
-    return group
+    director = group[4]
+    director = {
+        '1': "И.А. Коновал",
+        '2': "Т.В. Гаранина",
+        '3': "И.М. Самойлова",
+        '4': "Н.Ю. Лахметкина",
+        '5': "Е.В. Бычкова",
+    }.get(director, 0)
+    return director
 
 # Функкция создания ворд документа по шаблону
 def CreateWord(gender, group, surname, name, lastname, number, typeconcession, chooseDoc):
@@ -46,7 +55,7 @@ def CreateWord(gender, group, surname, name, lastname, number, typeconcession, c
         return "Error typeConcession"
     typeconcession = ConcessionMass[int(typeconcession)]
 
-    print(chooseDirector(group))
+    director = chooseDirector(group)
 
     context = {'gender': gender,
                'group': group,
@@ -54,7 +63,8 @@ def CreateWord(gender, group, surname, name, lastname, number, typeconcession, c
                'name': name,
                'lastname': lastname,
                'number': number,
-               'typeconcession': typeconcession}
+               'typeconcession': typeconcession,
+               'director': director}
 
     doc.render(context)
     LogFile = True
